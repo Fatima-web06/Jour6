@@ -1,13 +1,49 @@
-function searchCars(agents, property, value) {
+const agent1 = {
+    name: "James Bond",
+    car: {
+        brand: "Aston Martin",
+        model: "DB5",
+        color: "silver"
+    },
+    isMatching: function(key, value) {
+        return this.car && this.car[key] === value;
+    }
+};
+ 
+const agent2 = {
+    name: "Ethan Hunt",
+    car: {
+        brand: "BMW",
+        model: "M5",
+        color: "black"
+    },
+    isMatching: function(key, value) {
+        return this.car && this.car[key] === value;
+    }
+};
+ 
+const agent3 = {
+    name: "Jason Bourne",
+    car: {
+        brand: "Ford",
+        model: "Mustang",
+        color: "black"
+    },
+    isMatching: function(key, value) {
+        return this.car && this.car[key] === value;
+    }
+};
+ 
+function searchCars(agents, key, value) {
     return agents
-        .filter(agent => agent.car[property] === value)
-        .map(agent => agent.car);
+        .filter(function(agent) {
+            return agent.isMatching(key, value);
+        })
+        .map(function(agent) {
+            return agent.car;
+        });
 }
-
-const agents = [
-    { name: 'James Bond', car: { color: 'grey', brand: 'Aston Martin', model: 'DB5' } },
-    { name: 'Sherlock Holmes', car: { color: 'black', brand: 'Mercedes', model: 'GLA200' } }
-];
-
-const result = searchCars(agents, 'brand', 'Aston Martin');
-console.log(result);
+ 
+const agents = [agent1, agent2, agent3];
+const blackCars = searchCars(agents, 'color', 'black');
+console.log(blackCars);
