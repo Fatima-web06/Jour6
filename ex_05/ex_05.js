@@ -1,31 +1,20 @@
-class Car {
-    constructor(color, brand, model) {
-        this.color = color; 
-        this.brand = brand; 
-        this.model = model; 
-    }
-
+const car = {
+    color: 'grey',
+    model: 'DB5',
+    brand: 'Aston Martin',
     logInfo() {
-        console.log(`Car information: ${this.color}, ${this.model}, ${this.brand}`);
+      console.log(`Car information: ${this.color}, ${this.model}, ${this.brand}`);
     }
-}
-
-class Agent {
-    constructor(name, code, age, car) {
-        this.name = name; 
-        this.code = code; 
-        this.age = age; 
-        this.car = car; 
-    }
-
+  };
+  const agent = {
+    name: 'James Bond',
+    code: '007',
+    age: 57,
+    car: car,
     logInfo() {
-        console.log(`Agent information: ${this.name}, ${this.code}, ${this.age}`);
-        this.car.logInfo(); 
+      console.log(`Agent information: ${this.name}, ${this.code}, ${this.age}`);
+      console.log(`${this.name}'s Car information: ${this.car.color}, ${this.car.model}, ${this.car.brand}`);
     }
-}
-
-const bondCar = new Car('grey', 'DB5', 'Aston Martin');
-
-const agent = new Agent('James Bond', '007', 57, bondCar);
-
-agent.logInfo();
+  };
+  agent.logInfo();
+  agent.car.logInfo();
